@@ -1,0 +1,62 @@
+<%= form_with(model: transaction, local: true) do |form| %>
+  <% if transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+      <% transaction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :transaction_type %>
+    <%= form.text_field :transaction_type, id: :transaction_transaction_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :entity %>
+    <%= form.text_field :entity, id: :transaction_entity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transaction_number %>
+    <%= form.text_field :transaction_number, id: :transaction_transaction_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transaction_date %>
+    <%= form.date_select :transaction_date, id: :transaction_transaction_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :net_price %>
+    <%= form.text_field :net_price, id: :transaction_net_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vat %>
+    <%= form.number_field :vat, id: :transaction_vat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gross_price %>
+    <%= form.text_field :gross_price, id: :transaction_gross_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :internal_payoff %>
+    <%= form.text_field :internal_payoff, id: :transaction_internal_payoff %>
+  </div>
+
+  <div class="field">
+    <%= form.label :internal_paid %>
+    <%= form.check_box :internal_paid, id: :transaction_internal_paid %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transaction_type: MyString
+  entity: MyString
+  transaction_number: MyString
+  transaction_date: 2018-02-26
+  net_price: 9.99
+  vat: 1
+  gross_price: 9.99
+  internal_payoff: 9.99
+  internal_paid: false
+
+two:
+  transaction_type: MyString
+  entity: MyString
+  transaction_number: MyString
+  transaction_date: 2018-02-26
+  net_price: 9.99
+  vat: 1
+  gross_price: 9.99
+  internal_payoff: 9.99
+  internal_paid: false

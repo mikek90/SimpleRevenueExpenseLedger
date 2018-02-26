@@ -10,6 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20180226154016) do
+
+  create_table "ledgers", force: :cascade do |t|
+    t.string "type"
+    t.string "company"
+    t.string "invoice"
+    t.date "invoice_date"
+    t.decimal "net_price"
+    t.integer "vat"
+    t.decimal "gross_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.string "record_type"
+    t.string "company"
+    t.string "invoice"
+    t.date "invoice_date"
+    t.decimal "net_price"
+    t.integer "vat"
+    t.decimal "gross_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "revenue_expense_transactions", force: :cascade do |t|
+    t.string "order_type"
+    t.string "entity"
+    t.string "order_number"
+    t.date "order_date"
+    t.decimal "net_price"
+    t.integer "vat"
+    t.decimal "gross_price"
+    t.decimal "internal_payoff"
+    t.boolean "internal_paid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "transaction_type"
+    t.string "entity"
+    t.string "transaction_number"
+    t.date "transaction_date"
+    t.decimal "net_price"
+    t.integer "vat"
+    t.decimal "gross_price"
+    t.decimal "internal_payoff"
+    t.boolean "internal_paid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
