@@ -26,6 +26,8 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
 
+    check_prices
+
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
@@ -40,6 +42,9 @@ class TransactionsController < ApplicationController
   # PATCH/PUT /transactions/1
   # PATCH/PUT /transactions/1.json
   def update
+
+    check_prices
+
     respond_to do |format|
       if @transaction.update(transaction_params)
         format.html { redirect_to @transaction, notice: 'Transaction was successfully updated.' }
@@ -70,5 +75,12 @@ class TransactionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
       params.require(:transaction).permit(:transaction_type, :entity, :transaction_number, :transaction_date, :net_price, :vat, :gross_price, :internal_payoff, :internal_paid)
+    end
+
+    def check_prices
+      if @transaction.transaction_type == "E"
+        @transaction.net_price = -(@transaction.net_price)
+        @transaction.gross_price = -(@transaction.gross_price)
+      end
     end
 end
