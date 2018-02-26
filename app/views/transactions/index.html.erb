@@ -2,7 +2,7 @@
 
 <h1>Transactions</h1>
 
-<table>
+<table id="tab1" class="table table-bordered">
   <thead>
     <tr>
       <th>Transaction type</th>
@@ -35,9 +35,23 @@
         <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+    <tr>
+      <td colspan="4" style="text-align: right; font-weight: normal;">TOTAL:</td>
+      <td><%= @transactions.sum(:net_price) %></td>
+      <td></td>
+      <td><%= @transactions.sum(:gross_price) %></td>
+      <td colspan="5"></td>
+    </tr>
   </tbody>
 </table>
 
-<br>
+<br />
+
+Net income: <%= @transactions.sum(:net_price) %>
+<br />
+Gross income: <%= @transactions.sum(:gross_price) %>
+
+<br />
 
 <%= link_to 'New Transaction', new_transaction_path %>
+
